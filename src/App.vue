@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <router-view name='login' v-if='$route.path=="/login"'></router-view>
+
+    <Layout v-else></Layout>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
+  name:'App',
   components: {
-    HelloWorld
+    Layout:()=>import('@/components/layout/Layout.vue')
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+html,body{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+.app{
+  width: 100%;
+  height: 100%;
+  
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed #8c939d;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
 }
 </style>
